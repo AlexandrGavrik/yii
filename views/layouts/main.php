@@ -35,20 +35,36 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+	
+	if(\Yii::$app->user->can('canAdmin')):
+		echo Nav::widget([
+			'options' => ['class' => 'navbar-nav navbar-right'],
+			
+			'items' => [
+				['label' => 'Задачи', 'url' => ['/admin/task/index']],
+				['label' => 'Статусы', 'url' => ['/admin/status/index']],
+				['label' => 'Пользователи', 'url' => ['/admin/user/index']],
+				//['label' => 'Gii', 'url' => ['/gii']],
+			   
+			],
+		]);
+	endif;
+	
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
+		
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Gii', 'url' => ['/gii']],
             ['label' => 'Задачи', 'url' => ['/task/index']],
-            ['label' => 'Админ T', 'url' => ['/admin/task/index']],
-            ['label' => 'Админ S', 'url' => ['/admin/status/index']],
-            ['label' => 'Админ U', 'url' => ['/admin/user/index']],
+			//['label' => 'Рега', 'url' => ['/site/signup']],
+           // ['label' => 'Админ T', 'url' => ['/admin/task/index']],
+            //['label' => 'Админ S', 'url' => ['/admin/status/index']],
+            //['label' => 'Админ U', 'url' => ['/admin/user/index']],
             //['label' => 'Задачи2', 'url' => ['/task/index2']],
-            ['label' => 'Role', 'url' => ['/task/role']],
+            //['label' => 'Role', 'url' => ['/task/role']],
             //['label' => 'About', 'url' => ['/site/about']],
             //['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
+             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
                 '<li>'
@@ -59,35 +75,15 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            )
+            ) 
         ],
     ]);
     NavBar::end();
 	
 	
     ?>
-  <?php
-    NavBar::begin([
-    
-        'options' => [
-            'class' => 'tabbable tabs-right',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            ['label' => 'Задачи', 'url' => ['/task/index']],
-            ['label' => 'Админ T', 'url' => ['/admin/task/index']],
-            ['label' => 'Админ S', 'url' => ['/admin/status/index']],
-            ['label' => 'Админ U', 'url' => ['/admin/user/index']],
-          
-        ],
-    ]);
-    NavBar::end();
-	
-	
-    ?>
-    <div class="container">
+
+    <div class="container">  
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

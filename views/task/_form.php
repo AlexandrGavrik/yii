@@ -14,24 +14,12 @@ use app\models\Status;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?//= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
-    <?//= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
-
-    <?//= $form->field($model, 'createDate')->textInput() ?>
-
-    <?//= $form->field($model, 'changeDate')->textInput() ?>
-
-    <?//= $form->field($model, 'endDate')->textInput() ?>
-
-    <?= $form->field($model, 'status_id')->dropDownList(Status::getStatusList()) ?>
-	
-	
-
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Изменить статус', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Изменить статус на:', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
-
+	
+    <?= $form->field($model, 'status_id')->dropDownList(Status::getStatusList())->label(false) ?>
+	
     <?php ActiveForm::end(); ?>
 
 </div>

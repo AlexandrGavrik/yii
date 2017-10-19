@@ -18,6 +18,6 @@ class Status extends ActiveRecord
     }
     public static function getStatusList()
     {
-        return \yii\helpers\ArrayHelper::map(self::find()->all(),id,name);
+        return \yii\helpers\ArrayHelper::map(self::find()->orderBy(['sorting' => SORT_ASC])->all(),id,name);
     }
 }

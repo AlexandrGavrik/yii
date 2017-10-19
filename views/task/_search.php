@@ -16,12 +16,11 @@ use kartik\datecontrol\DateControl;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
-        'successCssClass'=>'inline',
+        'options' => ['class'=>'form-group-sm '], 
         
     ]); ?>
 <div>
-    <?= $form->field($model, 'id') ?>
-
+   
     <?= $form->field($model, 'name') ?>
 
     <?php echo $form->field($model, 'status_id')->dropDownList(Status::getStatusList(),[
@@ -30,10 +29,8 @@ use kartik\datecontrol\DateControl;
 	<?php echo $form->field($model, 'user_id')->dropDownList(User::getUserList(),[
         'prompt'=>'Выбрать Автора...'
     ]) ?>
-</div>
-    <?//= $form->field($model, 'description') ?>
-<div>
-    <?= $form->field($model, 'createDate') -> widget(DateControl::className(),['type'=>'datetime'])?>
+
+    <?= $form->field($model, 'createDate') -> widget(DateControl::className(),['type'=>'date'])?>
 
     <?= $form->field($model, 'changeDate') -> widget(DateControl::className(),[]) ?>
 

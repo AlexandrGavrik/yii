@@ -9,26 +9,25 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Signup;
+use app\models\User;
+use app\models\Task;
 
 class SiteController extends Controller
 {
     /**
      * @inheritdoc
      */
-    public function behaviors()
+     public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::className(),
                 //'only' => ['logout'],
                 'rules' => [
+                    
                     [
-                        'actions' => ['index'],
-                        'allow' => true,
-                        'roles' => ['canAdmin'],
-                    ],
-                    [
-                        'actions' => ['login','error'],
+                        'actions' => ['login','error','index'],
                         'allow' => true,
                     ],
                     [
@@ -46,10 +45,7 @@ class SiteController extends Controller
             ],
         ];
     }
-
-    /**
-     * @inheritdoc
-     */
+ 
     public function actions()
     {
         return [
@@ -132,4 +128,12 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+	public function actionSignup()
+	{
+		$model = new Task();
+		
+		return $this->render('signup',['model'=>$model]);
+	}
+	
 }

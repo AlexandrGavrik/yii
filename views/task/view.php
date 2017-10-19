@@ -15,39 +15,29 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="task-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-	<h2><?= Yii::$app->user->id ?> (<?= Yii::$app->user->identity->username ?>) <?=$model->user_id?></h2>
-    <?php if(\Yii::$app->user->can('updateTask',['author_id'=>$model->user_id])):?>
-    <p>
-		<?= Html::a('Изменить статус', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
+	<article class="col-sm-8 panel panel-success fixed-top">
+		<h1><?= Html::encode($this->title) ?></h1>
 		
+		<div class="alert alert-info">
+			<strong><?= $model->statusName ?></strong>
+			<p>Выполнить до <?= $model->endDate ?></p>
 		
+		</div>
 		
-    </p>
-	<?php endif; ?>
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            //'id',
-            //'name',
-            'description:text',
-            'createDate:datetime',
-            'changeDate:datetime',
-            'endDate:datetime',
-            ['attribute'=>'status_id', 'value'=>function($model){return $model->statusName;}],
-			['attribute'=>'user_id', 'value'=>function($model){return $model->userName;}],
-        ],
-    ]) ?>
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+		<hr>
+		<p><?= $model->description ?></p>
+		
+	</article>
+	<aside class="col-sm-3  panel panel-success col-sm-offset-1">
+		<dl>
+			<dt>Создан</dt>
+			<dd class="text-right"><?= $model->createDate ?></dd>
+			<dt>Редактирован</dt>
+			<dd class="text-right"><?= $model->changeDate ?></dd>
+			<dt>Автор</dt>
+			<dd class="text-right"><?= $model->userName ?></dd>
+		</dl>
+		<?= $this->render('_form', ['model' => $model]) ?>
+	</aside>
 
 </div>

@@ -8,10 +8,11 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+	'language'=>'ru',
     'modules' => [
-        'admin' => [
+          'admin' => [
             'class' => 'app\admin\Module',
-        ],
+        ], 
         'datecontrol' => [
             'class'=>'kartik\datecontrol\Module',
             'displaySettings'=>[
@@ -30,21 +31,21 @@ $config = [
         ],
     ],
     'components' => [
-        'authManager' => [
+         'authManager' => [
             'class' => 'yii\rbac\DbManager',
             //'cache' => 'cache',
-        ],
+        ],  
         //'cache' => [
         //    'class' => 'yii\caching\FileCache',  // Подключаем файловое кэширование данных
         //],
-        'formatter' => [
+         'formatter' => [
             'class'=>'yii\i18n\Formatter',
             'decimalSeparator'=>',',
             'thousandSeparator'=>' ',
             'currencyCode'=>'EUR',
             'dateFormat'=>'php: d/m/Y',
             'datetimeFormat'=>'php: d/m/Y H:i',
-        ],
+        ], 
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'dCprom5DvlPTbZw8HLXgiy5cUwk-LEHB',
@@ -53,7 +54,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\UserIdentity',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [

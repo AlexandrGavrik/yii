@@ -29,7 +29,7 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['username'], 'string', 'max' => 50],
-            [['password', 'password_hash'], 'string', 'max' => 255],
+            [['authKey', 'accessToken', 'password'], 'string', 'max' => 255],
         ];
     }
 
@@ -41,8 +41,9 @@ class User extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'username' => 'Username',
+            'authKey' => 'Auth Key',
+            'accessToken' => 'Access Token',
             'password' => 'Password',
-            'password_hash' => 'Password Hash',
         ];
     }
 }

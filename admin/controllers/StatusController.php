@@ -5,30 +5,15 @@ namespace app\admin\controllers;
 use Yii;
 use app\admin\models\Status;
 use app\admin\models\StatusSearch;
-use yii\web\Controller;
+use app\admin\controllers\MyController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * StatusController implements the CRUD actions for Status model.
  */
-class StatusController extends Controller
+class StatusController extends MyController
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Status models.
      * @return mixed

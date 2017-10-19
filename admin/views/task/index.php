@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\admin\models\TaskSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Tasks';
+$this->title = 'Задачи';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="task-index">

@@ -7,27 +7,7 @@ use yii\db\ActiveRecord;
 
 class Task extends ActiveRecord
 {   
-    /**
- * This is the model class for table "task".
- *
- * @property integer $id
- * @property string $name
- * @property string $description
- * @property string $createDate
- * @property string $changeDate
- * @property string $endDate
- * @property integer $status_id
- * @property integer $user_id
- */
-   /* 
-   public $name;
-    public $description;
-    public $createDate;
-    public $changeDate;
-    public $endDate;
-    public $status_id;
-	public $user_id;
-*/
+
     public function rules()
     {
         return [
@@ -51,7 +31,7 @@ class Task extends ActiveRecord
     }
 	public function getUser()
     {
-        return $this->hasOne(\app\admin\models\User::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
     public function getUserName()
     {
